@@ -24,8 +24,10 @@ export const links: Route.LinksFunction = () => [
 ];
 
 import { registerLicense } from "@syncfusion/ej2-base";
+import { enableRipple } from '@syncfusion/ej2-base';
 
 registerLicense(import.meta.env.VITE_SYNCFUSION_LICENSE_KEY)
+enableRipple(true);
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -45,8 +47,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Remove duplicate import since enableRipple is already imported above
+import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
+
 export default function App() {
-  return <Outlet />;
+  return (
+    <Outlet />
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
